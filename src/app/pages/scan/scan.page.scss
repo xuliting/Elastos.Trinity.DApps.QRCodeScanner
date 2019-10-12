@@ -1,0 +1,55 @@
+
+.qrscanner-area {
+    position: fixed;
+    height: 86%;
+    width: 100%;
+    background: url(../../../assets/imgs/scanner.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.through-line {
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background: red;
+    position: absolute;
+    animation: lineAnimation 2s linear infinite alternate;
+}
+@keyframes lineAnimation {
+    0% {
+        background: red;
+        top: 30%;
+    }
+    25% {
+        background: yellow;
+        top: 35%;
+    }
+    50% {
+        background: blue;
+        top: 40%;
+    }
+    75% {
+        background: green;
+        top: 45%;
+    }
+    100% {
+        background: red;
+        top: 50%;
+    }
+}
+.button-bottom {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right:0;
+    bottom: 0;
+    padding:10px;
+
+    .icon-light {
+        float:right;
+    }
+}
+
+.transparentBody {
+    background: transparent none !important;
+}
