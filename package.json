@@ -38,10 +38,8 @@
     "cordova-plugin-statusbar": "^2.4.2",
     "cordova-plugin-whitelist": "^1.3.3",
     "eth-lib": "^0.2.8",
-    "i": "^0.3.6",
     "ionic-angular": "^3.9.9",
     "ionicons": "3.0.0",
-    "npm": "^6.12.0",
     "rxjs": "^6.5.3",
     "rxjs-compat": "^6.5.3",
     "sw-toolbox": "3.6.0",
@@ -54,7 +52,7 @@
     "node-gyp": "^6.0.0",
     "node-sass": "^4.12.0"
   },
-  "description": "QR code scanner DAppfor the Elastos browser",
+  "description": "QR code scanner DApp for the Elastos browser",
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
