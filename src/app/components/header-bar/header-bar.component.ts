@@ -5,7 +5,7 @@ declare let appService: any;
 @Component({
     selector: 'header-bar',
     templateUrl: './header-bar.component.html',
-    styles: ['./header-bar.component.scss'],
+    styleUrls: ['./header-bar.component.scss'],
 })
 export class HeaderBarComponent implements OnInit {
     public back_touched = false;
@@ -19,6 +19,10 @@ export class HeaderBarComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }
+
+    launcher() {
+        appService.launcher();
+    }
 
     close() {
         appService.close();

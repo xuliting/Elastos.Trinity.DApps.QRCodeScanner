@@ -37,19 +37,8 @@
         top: 50%;
     }
 }
-.button-bottom {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    right:0;
-    bottom: 0;
-    padding:10px;
-
-    .icon-light {
-        float:right;
-    }
-}
 
 .transparentBody {
     background: transparent none !important;
+    --background: none transparent;
 }

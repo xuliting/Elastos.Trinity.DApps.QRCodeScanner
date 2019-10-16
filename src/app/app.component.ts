@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform } from '@ionic/angular';
 //import { StatusBar } from '@ionic-native/status-bar';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { ScanPage } from './pages/scan/scan.page';
 
 @Component({
+  selector: 'my-app',
   templateUrl: 'app.html'
 })
 export class MyApp {

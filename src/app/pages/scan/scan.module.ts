@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 
 import { ScanPage } from './scan.page';
+import { ComponentsModule } from '../../components/components.module';
 
 const routes: Routes = [
   {
@@ -17,7 +18,11 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    ComponentsModule,
     RouterModule.forChild(routes)
+  ],
+  entryComponents:[
+    ScanPage
   ],
   declarations: [ScanPage],
   schemas:[CUSTOM_ELEMENTS_SCHEMA] // Needed to find ion-back-button, etc

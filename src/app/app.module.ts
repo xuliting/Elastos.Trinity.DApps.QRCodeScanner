@@ -1,35 +1,32 @@
-import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 import { QRScanner } from '@ionic-native/qr-scanner/ngx';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { ModalController, AngularDelegate } from '@ionic/angular';
-import { MyApp } from './app.component';
-
-import { HeaderBarComponent } from './components/header-bar/header-bar.component';
-import { ScanPage } from './pages/scan/scan.page';
-
+import { IonicModule, IonicRouteStrategy, Platform } from '@ionic/angular';
+import { RouteReuseStrategy } from '@angular/router';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 
+import { MyApp } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ComponentsModule } from './components/components.module';
+import { ScanPageModule } from './pages/scan/scan.module';
+
 @NgModule({
   declarations: [
-    MyApp,
-    ScanPage,
-    HeaderBarComponent
+    MyApp
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
-    RouterModule.forRoot([])
+    AppRoutingModule,
+    ComponentsModule,
+    ScanPageModule,
+    IonicModule.forRoot(),
   ],
-  exports: [
-    HeaderBarComponent
-  ],
-  bootstrap: [IonicApp],
+  exports: [],
+  bootstrap: [MyApp],
   entryComponents: [
-    MyApp,
-    ScanPage
+    MyApp
   ],
   providers: [
     StatusBar,
@@ -37,8 +34,9 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
     QRScanner,
     ModalController,
     AngularDelegate,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA] // Needed to find ion-back-button, etc
+    Platform,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {provide: ErrorHandler, useClass: ErrorHandler}
+  ]
 })
 export class AppModule {}

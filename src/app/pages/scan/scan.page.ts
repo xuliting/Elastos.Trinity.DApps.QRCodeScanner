@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { AlertController } from 'ionic-angular'
+import { AlertController } from '@ionic/angular'
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 //import { Native } from '../../services/Native';
 import { ActivatedRoute } from '@angular/router';
@@ -11,7 +11,7 @@ declare let appService: any;
 @Component({
     selector: 'app-scan',
     templateUrl: './scan.page.html',
-    styles: ['./scan.page.scss'],
+    styleUrls: ['./scan.page.scss'],
 })
 export class ScanPage implements OnInit {
     torchLightOn: boolean;
