@@ -1,12 +1,12 @@
 {
-  "id": "org.elastos.trinity.dapps.qrcodescanner",
+  "id": "org.elastos.trinity.dapp.qrcodescanner",
   "version": "0.0.1",
   "version_code": 1,
   "name": "QRCode Scanner",
   "short_name": "QRCode Scanner",
   "description": "QRCode scanner for the Elastos browser",
-  "start_url": "http://192.168.31.103:8100",
-  "type": "url",
+  "start_url": "index.html",
+  "type": "file",
   "icons": [
     {
       "src": "assets/imgs/logo.png",
