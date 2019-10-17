@@ -33,7 +33,7 @@
   "urls": [],
   "intent_filters": [
     {
-      "action": "scancode"
+      "action": "scanqrcode"
     }
   ],
   "background_color": "#4e8ef7",
