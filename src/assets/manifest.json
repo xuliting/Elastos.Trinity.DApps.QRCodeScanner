@@ -31,6 +31,11 @@
     "NetworkStatus"
   ],
   "urls": [],
+  "intent_filters": [
+    {
+      "action": "scancode"
+    }
+  ],
   "background_color": "#4e8ef7",
   "theme_display": "show",
   "theme_color": "#4e8ef7"
