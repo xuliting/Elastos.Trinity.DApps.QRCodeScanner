@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-declare let appService: any;
+declare let appManager: any;
 
 @Component({
     selector: 'header-bar',
@@ -21,10 +21,10 @@ export class HeaderBarComponent implements OnInit {
     ngOnInit() { }
 
     launcher() {
-        appService.launcher();
+        appManager.launcher();
     }
 
     close() {
-        appService.close();
+        appManager.close();
     }
 }

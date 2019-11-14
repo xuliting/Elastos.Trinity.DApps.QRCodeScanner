@@ -6,7 +6,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-declare let appService: any;
+declare let appManager: any;
 
 @Component({
     selector: 'app-scan',
@@ -35,12 +35,12 @@ export class ScanPage implements OnInit {
         });
     }
 
-    /** 
-     * Toggle flash light on or off 
+    /**
+     * Toggle flash light on or off
      */
     toggleLight() {
         this.torchLightOn = !this.torchLightOn;
-        
+
         if (!this.torchLightOn)
             this.qrScanner.disableLight();
         else
@@ -71,7 +71,7 @@ export class ScanPage implements OnInit {
                 // Show camera preview
                 console.log("Showing camera preview")
                 this.showCamera()
-                
+
                 // Start scanning and listening to scan results
                 this.scanSub = this.qrScanner.scan().subscribe((text: string) => {
                     console.log("Scanned data: ", text)
@@ -96,7 +96,7 @@ export class ScanPage implements OnInit {
             }
         }).catch((e: any) => console.log('Unexpected error: ', e));
     }
-    
+
     stopScanning() {
         if (this.scanSub) {
             this.scanSub.unsubscribe();
@@ -114,7 +114,7 @@ export class ScanPage implements OnInit {
             new URL(scannedContent);
 
             console.log("Sending scanned content as a URL intent");
-            appService.sendUrlIntent(scannedContent, ()=>{
+            appManager.sendUrlIntent(scannedContent, ()=>{
                 // URL intent sent
                 console.log("Intent sent successfully")
                 this.exitApp()
@@ -127,7 +127,7 @@ export class ScanPage implements OnInit {
         } catch (_) {
             // Content can't be parsed as a URL: fallback solution is to use it as raw content
             console.log("Sending scanned content as raw content to an handlescannedcontent intent action");
-            appService.sendIntent("handlescannedcontent", {data: scannedContent}, ()=>{
+            appManager.sendIntent("handlescannedcontent", {data: scannedContent}, ()=>{
                 // Raw intent sent
                 console.log("Intent sent successfully")
                 this.exitApp()
@@ -152,7 +152,7 @@ export class ScanPage implements OnInit {
             }
           ]
         })
-    
+
         alert.present()
     }
 
@@ -162,7 +162,7 @@ export class ScanPage implements OnInit {
         this.stopScanning();
         this.hideCamera();
 
-        appService.close();
+        appManager.close();
     }
 
     /**
