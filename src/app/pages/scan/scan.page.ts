@@ -113,31 +113,61 @@ export class ScanPage implements OnInit {
         try {
             new URL(scannedContent);
 
-            console.log("Sending scanned content as a URL intent");
-            appManager.sendUrlIntent(scannedContent, ()=>{
-                // URL intent sent
-                console.log("Intent sent successfully")
-                this.exitApp()
-            }, (err)=>{
-                console.error("Intent sending failed", err)
-                this.ngZone.run(() => {
-                    this.showNooneToHandleIntent()
-                })
-            })
+            // Special case - DID FORMAT CHECK - DIDs are considered as URLs by the URL class
+            if (this.contentIsElastosDID(scannedContent)) {
+                this.sendIntentAsRaw(scannedContent)
+            }
+            else {
+                this.sendIntentAsUrl(scannedContent)
+            }
         } catch (_) {
             // Content can't be parsed as a URL: fallback solution is to use it as raw content
-            console.log("Sending scanned content as raw content to an handlescannedcontent intent action");
-            appManager.sendIntent("handlescannedcontent", {data: scannedContent}, ()=>{
-                // Raw intent sent
-                console.log("Intent sent successfully")
-                this.exitApp()
-            }, (err)=>{
-                console.error("Intent sending failed", err)
-                this.ngZone.run(() => {
-                    this.showNooneToHandleIntent()
-                })
-            })
+            this.sendIntentAsRaw(scannedContent)
         }
+    }
+
+    sendIntentAsUrl(scannedContent: string) {
+        console.log("Sending scanned content as a URL intent");
+        appManager.sendUrlIntent(scannedContent, ()=>{
+            // URL intent sent
+            console.log("Intent sent successfully")
+            this.exitApp()
+        }, (err)=>{
+            console.error("Intent sending failed", err)
+            this.ngZone.run(() => {
+                this.showNooneToHandleIntent()
+            })
+        })
+    }
+
+    sendIntentAsRaw(scannedContent: string) {
+        let scanIntentAction: string = "";
+        
+        // Handle specific content types to redirect to a more appropriate action.
+        // DID FORMAT CHECK
+        if (this.contentIsElastosDID(scannedContent)) {
+            // The scanned content seems to be a Elastos DID -> send this as a scanned "DID".
+            scanIntentAction = "handlescannedcontent_did"
+        }
+        else {
+            scanIntentAction = "handlescannedcontent"
+        }
+
+        console.log("Sending scanned content as raw content to an "+scanIntentAction+" intent action");
+        appManager.sendIntent(scanIntentAction, {data: scannedContent}, ()=>{
+            // Raw intent sent
+            console.log("Intent sent successfully as action '"+scanIntentAction+"'")
+            this.exitApp()
+        }, (err)=>{
+            console.error("Intent sending failed", err)
+            this.ngZone.run(() => {
+                this.showNooneToHandleIntent()
+            })
+        })
+    }
+
+    contentIsElastosDID(scannedContent) {
+        return (scannedContent.indexOf("did:elastos:") == 0);
     }
 
     async showNooneToHandleIntent() {
