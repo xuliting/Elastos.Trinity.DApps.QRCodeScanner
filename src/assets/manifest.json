@@ -6,7 +6,7 @@
   "short_name": "QRCode Scanner",
   "description": "QRCode scanner for the Elastos browser",
   "start_url": "index.html",
-  "type": "file",
+  "type": "app",
   "icons": [
     {
       "src": "assets/imgs/logo.png",
