@@ -5,6 +5,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 
 import { ScanPage } from './pages/scan/scan.page';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'my-app',
@@ -13,7 +14,7 @@ import { ScanPage } from './pages/scan/scan.page';
 export class MyApp {
   rootPage:any = ScanPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private appService: AppService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

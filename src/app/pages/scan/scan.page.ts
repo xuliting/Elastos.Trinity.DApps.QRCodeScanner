@@ -5,8 +5,13 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 //import { Native } from '../../services/Native';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AppService } from 'src/app/app.service';
 
-declare let appManager: any;
+declare let appManager: AppManagerPlugin.AppManager;
+
+export type ScanPageRouteParams = {
+    fromIntent: boolean
+}
 
 @Component({
     selector: 'app-scan',
@@ -19,12 +24,19 @@ export class ScanPage implements OnInit {
     contentWasScanned: boolean = false;
     scannedText: string = "";
     scanSub: Subscription = null;
+    fromIntentRequest: boolean = false;
 
     constructor(public route: ActivatedRoute,
         private qrScanner: QRScanner,
         private platform: Platform,
         private ngZone: NgZone,
+        private appService: AppService,
         private alertController: AlertController) {
+
+        this.route.queryParams.subscribe((params: any) => {
+            console.log("params",params);
+            this.fromIntentRequest = (params.fromIntent == "true");
+        });
     }
 
     ngOnInit() {
@@ -84,7 +96,12 @@ export class ScanPage implements OnInit {
                     this.hideCamera()
                     this.stopScanning()
 
-                    this.runScannedContent(this.scannedText)
+                    // Either emit a new intent if the scanner app was opened manually, or
+                    // send a intent resposne if this app was opened by a "scanqrcode" intent request.
+                    if (!this.fromIntentRequest)
+                        this.runScannedContent(this.scannedText)
+                    else
+                        this.returnScannedContentToIntentRequester(this.scannedText);
                 });
                 // Wait for user to scan something, then the observable callback will be called
             } else if (status.denied) {
@@ -102,6 +119,11 @@ export class ScanPage implements OnInit {
             this.scanSub.unsubscribe();
             this.scanSub = null;
         }
+    }
+
+    async returnScannedContentToIntentRequester(scannedContent: string) {
+        await this.appService.sendScanQRCodeIntentResponse(scannedContent);
+        this.exitApp()
     }
 
     /**
