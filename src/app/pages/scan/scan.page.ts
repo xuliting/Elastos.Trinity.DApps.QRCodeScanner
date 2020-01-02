@@ -67,6 +67,8 @@ export class ScanPage implements OnInit {
     }
 
     hideCamera() {
+        if (!this.isCameraShown) return;
+
         window.document.querySelector('ion-app').classList.remove('transparentBody')
         this.qrScanner.hide();
         this.qrScanner.destroy();
@@ -164,7 +166,7 @@ export class ScanPage implements OnInit {
 
     sendIntentAsRaw(scannedContent: string) {
         let scanIntentAction: string = "";
-        
+
         // Handle specific content types to redirect to a more appropriate action.
         // DID FORMAT CHECK
         if (this.contentIsElastosDID(scannedContent)) {
