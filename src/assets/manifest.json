@@ -1,12 +1,14 @@
 {
   "id": "org.elastos.trinity.dapp.qrcodescanner",
-  "version": "0.0.1",
-  "version_code": 1,
+  "version": "1.0.1",
+  "version_code": 2,
   "name": "Scanner",
   "short_name": "Scanner",
+  "short_description":"Scan anything!",
   "description": "QRCode scanner for the elastOS browser",
   "start_url": "index.html",
   "type": "app",
+  "category":"tools",
   "icons": [
     {
       "src": "assets/imgs/logo.png",
@@ -20,8 +22,9 @@
     }
   ],
   "author": {
-    "name": "Benjamin Piette",
-    "email": "benjaminpiette@elastos.org"
+    "name": "Elastos foundation",
+    "email": "contact@elastos.org",
+    "website": "https://www.elastos.org"
   },
   "default_locale": "en",
   "plugins": [
