@@ -176,7 +176,7 @@ export class ScanPage implements OnInit {
         }
 
         console.log("Sending scanned content as raw content to an "+scanIntentAction+" intent action");
-        appManager.sendIntent(scanIntentAction, {data: scannedContent}, ()=>{
+        appManager.sendIntent(scanIntentAction, {data: scannedContent}, {}, ()=>{
             // Raw intent sent
             console.log("Intent sent successfully as action '"+scanIntentAction+"'")
             this.exitApp()
