@@ -197,6 +197,7 @@ export class ScanPage implements OnInit {
     async showNooneToHandleIntent() {
         let alert = await this.alertController.create({
           message: 'Sorry, no installed DApp can currently manage this QR code.',
+          backdropDismiss: false,
           buttons: [
            {
               text: 'Ok',
