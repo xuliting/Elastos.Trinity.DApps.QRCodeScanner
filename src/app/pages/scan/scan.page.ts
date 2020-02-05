@@ -47,6 +47,10 @@ export class ScanPage implements OnInit {
         });
     }
 
+    ionViewDidEnter() {
+        appManager.setVisible("show", ()=>{}, (err)=>{});
+    }
+
     /**
      * Toggle flash light on or off
      */

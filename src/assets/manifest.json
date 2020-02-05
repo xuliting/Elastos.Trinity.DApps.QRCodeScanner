@@ -8,6 +8,7 @@
   "description": "QRCode scanner for the elastOS browser",
   "start_url": "index.html",
   "type": "app",
+  "start_visible": "hide",
   "category":"tools",
   "icons": [
     {
@@ -29,7 +30,6 @@
   "default_locale": "en",
   "plugins": [
     "Device",
-    "SplashScreen",
     "QRScanner",
     "NetworkStatus"
   ],
