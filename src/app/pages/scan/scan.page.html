@@ -1,7 +1,3 @@
-<ion-header>
-    <header-bar title="Scan a QR code"></header-bar>
-</ion-header>
-
 <ion-content no-scroll [ngClass]="{'transparentBody':isCameraShown}">
     <div *ngIf="isCameraShown && !contentWasScanned" style="text-align: center">
         <div class='qrscanner-area'> </div>
