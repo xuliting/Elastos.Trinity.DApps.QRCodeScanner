@@ -32,7 +32,6 @@ export class ScanPage implements OnInit {
         private ngZone: NgZone,
         private appService: AppService,
         private alertController: AlertController) {
-
         this.route.queryParams.subscribe((params: any) => {
             console.log("params",params);
             this.fromIntentRequest = (params.fromIntent == "true");
@@ -43,13 +42,15 @@ export class ScanPage implements OnInit {
         // Make sure everything is ready including plugins before starting the scanner
         this.platform.ready().then(() => {
             console.log("Platform is ready");
+            appManager.setVisible("show", ()=>{}, (err)=>{});
             this.startScanningProcess()
         });
     }
 
-    ionViewDidEnter() {
-        appManager.setVisible("show", ()=>{}, (err)=>{});
-    }
+    // the default route will start this page, maybe the Platform isn't ready.
+    // ionViewDidEnter() {
+    //    appManager.setVisible("show", ()=>{}, (err)=>{});
+    // }
 
     /**
      * Toggle flash light on or off
