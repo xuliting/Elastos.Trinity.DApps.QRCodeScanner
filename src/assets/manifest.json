@@ -1,45 +1,45 @@
 {
-  "id": "org.elastos.trinity.dapp.qrcodescanner",
-  "version": "1.0.2",
-  "version_code": 3,
-  "name": "Scanner",
-  "short_name": "Scanner",
-  "short_description":"Scan anything!",
-  "description": "QRCode scanner for the elastOS browser",
-  "start_url": "index.html",
-  "type": "app",
-  "start_visible": "hide",
-  "category":"tools",
-  "icons": [
-    {
-      "src": "assets/imgs/logo.png",
-      "sizes": "512x512",
-      "type": "image/png"
+    "id": "org.elastos.trinity.dapp.qrcodescanner",
+    "version": "1.0.3",
+    "version_code": 4,
+    "name": "Scanner",
+    "short_name": "Scanner",
+    "short_description": "Scan anything!",
+    "description": "QRCode scanner for the elastOS browser",
+    "start_url": "index.html",
+    "type": "app",
+    "start_visible": "hide",
+    "category": "tools",
+    "icons": [
+        {
+            "src": "assets/imgs/logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/imgs/logo.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        }
+    ],
+    "author": {
+        "name": "Elastos foundation",
+        "email": "contact@elastos.org",
+        "website": "https://www.elastos.org"
     },
-    {
-      "src": "assets/imgs/logo.png",
-      "sizes": "128x128",
-      "type": "image/png"
-    }
-  ],
-  "author": {
-    "name": "Elastos foundation",
-    "email": "contact@elastos.org",
-    "website": "https://www.elastos.org"
-  },
-  "default_locale": "en",
-  "plugins": [
-    "Device",
-    "QRScanner",
-    "NetworkStatus"
-  ],
-  "urls": [],
-  "intent_filters": [
-    {
-      "action": "scanqrcode"
-    }
-  ],
-  "background_color": "#4e8ef7",
-  "theme_display": "show",
-  "theme_color": "#4e8ef7"
+    "default_locale": "en",
+    "plugins": [
+        "Device",
+        "QRScanner",
+        "NetworkStatus"
+    ],
+    "urls": [],
+    "intent_filters": [
+        {
+            "action": "scanqrcode"
+        }
+    ],
+    "background_color": "#4e8ef7",
+    "theme_display": "show",
+    "theme_color": "#4e8ef7"
 }
