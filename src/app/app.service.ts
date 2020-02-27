@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Platform, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ScanPageRouteParams } from './pages/scan/scan.page';
@@ -11,7 +11,7 @@ declare let appManager: AppManagerPlugin.AppManager;
 export class AppService {
     private intentRequest: AppManagerPlugin.ReceivedIntent;
 
-    constructor(private platform: Platform, private navCtrl: NavController, private router: Router) {
+    constructor(private platform: Platform, private navCtrl: NavController, private router: Router, private ngZone: NgZone) {
         this.init();
     }
 
@@ -53,18 +53,20 @@ export class AppService {
 
     private showScanScreen(fromIntentRequest: boolean) {
         this.navCtrl.setDirection('root');
-
         let queryParams = {
             fromIntent: fromIntentRequest
         };
-        this.router.navigate(["/scan"], {
-            queryParams: queryParams
+
+        this.ngZone.run(() => {
+            this.router.navigate(["/scan"], {
+                queryParams: queryParams
+            });
         });
     }
 
     public sendScanQRCodeIntentResponse(scannedContent: string): Promise<void> {
         console.log("Sending scanqrcode intent response");
-        
+
         return new Promise((resolve, reject)=>{
             appManager.sendIntentResponse("scanqrcode", {
                 scannedContent: scannedContent
@@ -73,6 +75,6 @@ export class AppService {
             }, (err: any)=>{
                 reject();
             });
-        });   
+        });
     }
 }

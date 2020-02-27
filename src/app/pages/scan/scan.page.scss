@@ -18,23 +18,27 @@
 @keyframes lineAnimation {
     0% {
         background: red;
-        top: 30%;
-    }
-    25% {
-        background: yellow;
         top: 35%;
     }
-    50% {
-        background: blue;
+    20% {
+        background: yellow;
         top: 40%;
     }
-    75% {
-        background: green;
+    40% {
+        background: blue;
         top: 45%;
+    }
+    60% {
+        background: greenyellow;
+        top: 50%;
+    }
+    80% {
+        background: salmon;
+        top: 55%;
     }
     100% {
         background: red;
-        top: 50%;
+        top: 60%;
     }
 }
 
