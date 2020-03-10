@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 
 import { ScanPage } from './pages/scan/scan.page';
 import { AppService } from './app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'my-app',
@@ -14,12 +15,20 @@ import { AppService } from './app.service';
 export class MyApp {
   rootPage:any = ScanPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private appService: AppService) {
+  constructor(
+    platform: Platform, 
+    statusBar: StatusBar, 
+    splashScreen: SplashScreen, 
+    private appService: AppService,
+    private router: Router) {
+      
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+
+      this.router.navigate(["scan"]);
     });
   }
 }

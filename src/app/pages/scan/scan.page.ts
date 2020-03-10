@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { AppService } from 'src/app/app.service';
 
 declare let appManager: AppManagerPlugin.AppManager;
+declare let titleBarManager: TitleBarPlugin.TitleBarManager;
 
 export type ScanPageRouteParams = {
     fromIntent: boolean
@@ -41,9 +42,18 @@ export class ScanPage implements OnInit {
         // Make sure everything is ready including plugins before starting the scanner
         this.platform.ready().then(() => {
             console.log("Platform is ready");
-            appManager.setVisible("show", ()=>{}, (err)=>{});
-            this.startScanningProcess()
+            // Notify system that the app is ready
+            appManager.setVisible("show");
         });
+    }
+
+    ionViewWillEnter() {
+        titleBarManager.setNavigationMode(TitleBarPlugin.TitleBarNavigationMode.CLOSE);
+    }
+
+    ionViewDidEnter() {
+        console.log("Starting scanning process");
+        this.startScanningProcess();
     }
 
     // the default route will start this page, maybe the Platform isn't ready.
