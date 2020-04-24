@@ -1,7 +1,7 @@
 {
     "id": "org.elastos.trinity.dapp.qrcodescanner",
-    "version": "1.0.4",
-    "version_code": 5,
+    "version": "1.1.1",
+    "version_code": 6,
     "name": "Scanner",
     "short_name": "Scanner",
     "short_description": "Scan anything!",
@@ -23,9 +23,9 @@
         }
     ],
     "author": {
-        "name": "Elastos foundation",
-        "email": "contact@elastos.org",
-        "website": "https://www.elastos.org"
+        "name": "Trinity Tech Co., Ltd.",
+        "email": "contact@trinity-tech.io",
+        "website": "https://www.trinity-tech.io"
     },
     "default_locale": "en",
     "plugins": [
