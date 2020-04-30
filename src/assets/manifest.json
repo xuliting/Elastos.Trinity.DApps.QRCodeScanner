@@ -1,7 +1,7 @@
 {
     "id": "org.elastos.trinity.dapp.qrcodescanner",
-    "version": "1.1.1",
-    "version_code": 6,
+    "version": "1.1.2",
+    "version_code": 7,
     "name": "Scanner",
     "short_name": "Scanner",
     "short_description": "Scan anything!",
